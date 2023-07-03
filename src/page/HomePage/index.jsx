@@ -12,11 +12,10 @@ import { CourseService } from "../../services/courseService";
 import { homeServices } from "../../services/homeServices";
 import Gallery from "./Gallery";
 import RateHome from "./Rate";
-import CallRegister from "./callRegister";
+import CallRegister from "./CallRegister";
 
 const HomePage = () => {
   const { data } = useQuery(() => CourseService.getCourse());
-  console.log("data :>> ", data);
   const { data: gallery } = useQuery(() => homeServices.getGallery());
   const { galleries } = gallery || [];
 

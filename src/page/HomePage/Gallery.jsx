@@ -10,11 +10,11 @@ const Gallery = ({ galleries }) => {
         </h2>
       </div>
       <div className="list">
-        {galleryItem?.length > 0 &&
+        {/*{galleryItem?.length > 0 &&
           galleryItem?.map((item, index) => {
             console.log("item :>> ", item);
             return <img data-flickity-lazyload={item} key={index} alt=""></img>;
-          })}
+          })}*/}
 
         {/*<img
           data-flickity-lazyload="https://cfdcircle.vn/files/about/Team/dsc01129.jpg"
