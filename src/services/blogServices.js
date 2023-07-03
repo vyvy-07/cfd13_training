@@ -1,5 +1,5 @@
 import axiosInstance from "../utils/axiosInstance";
-export const BlogServices = {
+export const blogServices = {
   getListBlog(query = "") {
     return axiosInstance.get(`/blogs`);
   },

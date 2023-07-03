@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { BlogServices } from "../../services/BlogServices";
 import { formatDate } from "../../utils/format";
 import BlogDetailRelated from "./blogDetailRelated";
+import { blogServices } from "../../services/blogServices";
 
 const BlogDetail = () => {
   const [BlogDetails, setBlogDetails] = useState({});
@@ -11,7 +11,7 @@ const BlogDetail = () => {
 
   useEffect(() => {
     const BlogDetail = async (slug) => {
-      const resDetail = await BlogServices.getDetailBlog(slug);
+      const resDetail = await blogServices.getDetailBlog(slug);
       setBlogDetails(resDetail?.data?.data);
     };
     BlogDetail(slug);
