@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CourseItem from "../../component/CourseItem";
-import { CourseService } from "../../services/CourseService";
+import { CourseService } from "../../services/courseService";
 import useQuery from "../../hooks/useQuery";
 import { useParams } from "react-router-dom";
 
