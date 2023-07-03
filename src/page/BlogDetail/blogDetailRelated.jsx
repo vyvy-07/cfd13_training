@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BlogItem from "../../component/BlogItem";
-import { BlogServices } from "../../services/BlogServices";
+import { blogServices } from "../../services/blogServices";
 
 const BlogDetailRelated = () => {
   const { slug } = useParams();
@@ -9,7 +9,7 @@ const BlogDetailRelated = () => {
   useEffect(() => {
     const listBlogs = async () => {
       try {
-        const res = await BlogServices.getListBlog(slug);
+        const res = await blogServices.getListBlog(slug);
         setBlogs(res.data?.data?.blogs);
       } catch (error) {
         console.log("error :>> ", error);

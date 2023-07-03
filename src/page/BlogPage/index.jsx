@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import BlogItem from "../../component/BlogItem";
-import { BlogServices } from "../../services/BlogServices";
+import { blogServices } from "../../services/blogServices";
 import { message } from "antd";
 
 const BlogPage = () => {
@@ -8,7 +8,7 @@ const BlogPage = () => {
   useEffect(() => {
     const ListBlogItem = async () => {
       try {
-        const res = await BlogServices.getListBlog();
+        const res = await blogServices.getListBlog();
         setBlogsList(res?.data.data?.blogs);
       } catch (error) {
         message.error("Vui lòng thử lại!");
