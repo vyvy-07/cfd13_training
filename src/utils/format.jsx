@@ -1,5 +1,3 @@
-import React from "react";
-
 const formatCurrency = (price, type = "vi-VN") => {
   if (!price) return 0;
   return price.toLocaleString(type, { minimumFractionDigits: 0 });

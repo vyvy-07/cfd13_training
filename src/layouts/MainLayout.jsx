@@ -4,10 +4,8 @@ import { AuthenProvider } from "../component/AuthenContext";
 import FormModal from "../component/AuthenModal";
 import Footer from "../component/Footer";
 import Header from "../component/Header";
-import Loading from "../component/Loading";
 import Modal from "../component/Modal";
 import NavBar from "../component/Navbar";
-import PageLoading from "../component/Loading";
 
 const MainLayout = () => {
   const { pathname } = useLocation();

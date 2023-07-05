@@ -10,46 +10,9 @@ const ProfileLayout = () => {
   if (!token) {
     return <Navigate to={"/"} />;
   }
-  const {
-    profiles,
-    courseOrder,
-    paymentOrder,
-    //  profilePayment,
-    //  profileCourse,
-    //  setProfileCourse,
-    //  setProfilePayment,
-  } = useAuthen();
+  const { profiles } = useAuthen();
   const { firstName, email, facebookURL, phone, introduce } = profiles;
-  //const CourseOrder = async () => {
-  //  try {
-  //    const resCourseoder = await CourseOder.getCourseOrder(token);
-  //    if (resCourseoder?.data?.data) {
-  //      const mapCourse = resCourseoder?.data?.data?.orders;
-  //      const item = mapCourse.map((item) => {
-  //        return item.course;
-  //      });
-  //      setProfileCourse(item ?? []);
-  //    }
-  //  } catch (error) {
-  //    console.log(error);
-  //  }
-  //};
-  //const paymentOrder = async () => {
-  //  try {
-  //    const resPaymentoder = await CourseOder.getPaymentOrder(token);
-  //    setProfilePayment(resPaymentoder.data?.data?.orders);
-  //  } catch (error) {
-  //    console.log(error);
-  //  }
-  //};
-  //console.log("profilePayment :>> ", profilePayment);
 
-  //useEffect(() => {
-  //  CourseOrder();
-  //  paymentOrder();
-  //}, []);
-
-  //console.log("profileCourse :>> ", profileCourse);
   return (
     <main className="mainwrapper profilepage">
       <div className="container">
@@ -59,7 +22,7 @@ const ProfileLayout = () => {
               <div className="useravatar">
                 <div className="avatar">
                   <div className="img">
-                    <img src="/img/avatar_nghia.jpg" alt="avatar" />
+                    <img src="/img/avtvy.JPG" alt="avatar" />
                   </div>
                 </div>
                 <h3 className="title --t3">{firstName}</h3>

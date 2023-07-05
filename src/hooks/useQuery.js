@@ -12,7 +12,7 @@ const useQuery = (promise, dependency = []) => {
     try {
       setLoading(true);
       const res = await promise();
-      console.log("res", res);
+      //console.log("res", res);
       setData(res?.data?.data || []);
     } catch (error) {
       setError(error);

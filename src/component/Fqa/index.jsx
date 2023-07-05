@@ -3,6 +3,7 @@ import { AnswerTheQuestion } from "../../services/faq";
 
 const Faq = () => {
   const [questions, setquestions] = useState([]);
+  const [active, setActive] = useState(null);
   useEffect(() => {
     const FAQuestion = async () => {
       try {
@@ -27,9 +28,49 @@ const Faq = () => {
             <div className="accordion">
               <h3 className="accordion__title label">Thông tin chung</h3>
               {questions.length > 0 &&
-                questions.map((item, index) => {
+                questions?.slice(0, 6).map((item, index) => {
                   return (
-                    <div className="accordion__content" key={index}>
+                    <div
+                      onClick={() => {
+                        setActive((prev) =>
+                          prev === item?.id ? null : item?.id
+                        );
+                      }}
+                      className={`accordion__content ${
+                        active === item?.id ? "active" : ""
+                      }`}
+                      key={index}
+                    >
+                      <div className="accordion__content-title">
+                        <h4>
+                          <strong>{item.question}</strong>
+                        </h4>
+                      </div>
+                      <div className="accordion__content-text">
+                        {item.answer}
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
+            <div className="accordion">
+              <h3 className="accordion__title label">
+                Đăng kí, thanh toán, ưu đãi
+              </h3>
+              {questions.length > 0 &&
+                questions?.slice(6, 9).map((item, index) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        setActive((prev) =>
+                          prev === item?.id ? null : item?.id
+                        );
+                      }}
+                      className={`accordion__content ${
+                        active === item?.id ? "active" : ""
+                      }`}
+                      key={index}
+                    >
                       <div className="accordion__content-title">
                         <h4>
                           <strong>{item.question}</strong>

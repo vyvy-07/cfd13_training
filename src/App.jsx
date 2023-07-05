@@ -23,7 +23,7 @@ const PrivateRoute = lazy(() => import("./component/PrivateRoute"));
 
 function App() {
   return (
-    <Suspense fallcack={<PageLoading />}>
+    <Suspense fallback={<PageLoading />}>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />

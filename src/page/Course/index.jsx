@@ -6,30 +6,9 @@ import { CourseService } from "../../services/courseService";
 
 const CoursePage = () => {
   //tạo 1 state
-  const {
-    data: courses,
-
-    loading,
-  } = useQuery(() => CourseService.getCourse());
+  const { data: courses, loading } = useQuery(() => CourseService.getCourse());
   let arrCourses = courses?.courses || "";
-  console.log(arrCourses);
-  //const [courses, setCourses] = useState([]);
-  //const [loading, setLoading] = useState(false);
-  //useEffect(() => {
-  //  const fetchCourse = async () => {
-  //    try {
-  //      setLoading(true);
-  //      const res = await CourseService.getCourse();
-  //      setCourses(res.data?.data?.courses || []);
-  //    } catch (error) {
-  //      message.error("Lỗi! Vui lòng thử lại!");
-  //      console.log(error);
-  //    } finally {
-  //      setLoading(false);
-  //    }
-  //  };
-  //  fetchCourse();
-  //}, []);
+
   return (
     <main className="mainwrapper courses --ptop">
       <div className="container">

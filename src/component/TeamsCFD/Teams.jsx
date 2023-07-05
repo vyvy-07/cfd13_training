@@ -28,17 +28,17 @@ const Teams = () => {
     });
     courseComingSlider.flickity("resize");
   }
-  console.log("myTeams :>> ", myTeams);
+  //console.log("myTeams :>> ", myTeams);
 
   useEffect(() => {
     setMyTeams(teams?.teams);
-    console.log("teams :>> ", teams);
+    //console.log("teams :>> ", teams);
   }, [teams]);
 
   useEffect(() => {
     //console.log("teams :>> ", teams);
     if (myTeams?.length > 0) {
-      console.log("myTeams :>> ", myTeams);
+      //console.log("myTeams :>> ", myTeams);
 
       setTimeout(() => {
         teacherSlider();

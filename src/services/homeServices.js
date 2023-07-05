@@ -7,4 +7,7 @@ export const homeServices = {
   getGallery(query = "") {
     return axiosInstance.get(`/galleries${query}`);
   },
+  getRates(query = "") {
+    return axiosInstance.get(`/rates${query}`);
+  },
 };
