@@ -4,7 +4,6 @@ import CourseItem from "../../component/CourseItem";
 
 const MyCourse = () => {
   const { profileCourse } = useAuthen();
-  console.log("hmm :>> ", profileCourse);
   return (
     <div className="tab__content-item" style={{ display: "block" }}>
       <div className="courses__list">

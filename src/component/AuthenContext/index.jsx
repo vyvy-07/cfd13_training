@@ -34,7 +34,6 @@ export const AuthenProvider = ({ children }) => {
     //call API
     try {
       const res = await AuthService.login(loginData);
-      console.log("res :>> ", res);
       const { token, refreshToken } = res.data?.data || "";
       //lưu vào localstogare
       localStorage.setItem(LOCAL_STOGARE.token, token);
@@ -89,9 +88,7 @@ export const AuthenProvider = ({ children }) => {
       const resCourseoder = await CourseOder.getCourseOrder(token);
       if (resCourseoder?.data?.data) {
         const mapCourse = resCourseoder?.data?.data;
-        //const item = mapCourse.map((item) => {
-        //  return item ?? item.course;
-        //});
+
         setProfileCourse(resCourseoder?.data?.data ?? []);
       }
     } catch (error) {
