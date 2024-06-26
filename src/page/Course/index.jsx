@@ -1,13 +1,13 @@
-import React from "react";
-import useQuery from "../../hooks/useQuery";
-import { Empty, Skeleton } from "antd";
-import CourseItem from "../../component/CourseItem";
-import { CourseService } from "../../services/courseService";
+import React from 'react';
+import useQuery from '../../hooks/useQuery';
+import { Empty, Skeleton } from 'antd';
+import CourseItem from '../../component/CourseItem';
+import { CourseService } from '../../services/courseService';
 
 const CoursePage = () => {
   //tạo 1 state
   const { data: courses, loading } = useQuery(() => CourseService.getCourse());
-  let arrCourses = courses?.courses || "";
+  let arrCourses = courses?.courses || '';
 
   return (
     <main className="mainwrapper courses --ptop">
@@ -21,12 +21,12 @@ const CoursePage = () => {
           {!loading && arrCourses?.length === 0 && (
             <Empty
               description="Dữ liệu hiện không tìm thấy"
-              style={{ margin: "0 auto" }}
+              style={{ margin: '0 auto' }}
             />
           )}
           {loading &&
             Array(6)
-              .fill("")
+              .fill('')
               .map((_, index) => (
                 <div key={index} className="courses__list-item">
                   <Skeleton active />

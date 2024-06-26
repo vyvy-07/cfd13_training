@@ -1,35 +1,34 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 const Gallery = ({ galleries }) => {
   const galleryItem = galleries?.[0]?.images;
   useEffect(() => {
     function teamSlider() {
-      let $carouselGallery = $(".gallery .list"),
-        $progressBar = $(".gallery .timeline .process");
+      let $carouselGallery = $('.gallery .list'),
+        $progressBar = $('.gallery .timeline .process');
 
       $carouselGallery.flickity({
         contain: true,
-        wrapAround: false,
         freeScroll: true,
-        cellAlign: "left",
+        cellAlign: 'left',
         lazyLoad: 6,
         imagesLoaded: true,
         wrapAround: true,
         prevNextButtons: false,
       });
-      $carouselGallery.on("scroll.flickity", function (event, progress) {
+      $carouselGallery.on('scroll.flickity', function (event, progress) {
         progress = Math.max(0.05, Math.min(1, progress));
-        $progressBar.width(progress * 100 + "%");
+        $progressBar.width(progress * 100 + '%');
       });
 
-      let ctrPrevGallery = $(".gallery .btn_ctr.prev"),
-        ctrNextGallery = $(".gallery .btn_ctr.next");
+      let ctrPrevGallery = $('.gallery .btn_ctr.prev'),
+        ctrNextGallery = $('.gallery .btn_ctr.next');
 
-      ctrPrevGallery.on("click", function () {
-        $carouselGallery.flickity("previous");
+      ctrPrevGallery.on('click', function () {
+        $carouselGallery.flickity('previous');
       });
-      ctrNextGallery.on("click", function () {
-        $carouselGallery.flickity("next");
+      ctrNextGallery.on('click', function () {
+        $carouselGallery.flickity('next');
       });
     }
 
@@ -48,7 +47,7 @@ const Gallery = ({ galleries }) => {
       <div className="list">
         {galleryItem?.map((item, index) => (
           <img
-            data-flickity-lazyload={item || ""}
+            data-flickity-lazyload={item || ''}
             key={item?.id || index}
             alt=""
           ></img>

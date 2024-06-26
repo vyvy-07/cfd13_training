@@ -5,7 +5,6 @@ import { homeServices } from "../../services/homeServices";
 const Teams = () => {
   const { data: teams } = useQuery(() => homeServices.getInfoHero());
   const [myTeams, setMyTeams] = useState(teams?.data);
-  const { name, jobTitle } = myTeams || [];
   function teacherSlider() {
     let courseComingSlider = $(".teacher .teacher__list .teacher__list-inner");
 

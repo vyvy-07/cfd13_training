@@ -1,45 +1,35 @@
-import { message } from "antd";
-import React, { createContext, useEffect, useContext, useState } from "react";
-import { LOCAL_STOGARE } from "../../constants/localStogare";
-import { AuthService } from "../../services/authServices";
-import { CourseOder } from "../../services/courseOder";
+import { message } from 'antd';
+import React, { createContext, useEffect, useContext, useState } from 'react';
+import { LOCAL_STOGARE } from '../../constants/localStogare';
+import { AuthService } from '../../services/authServices';
+import { CourseOder } from '../../services/courseOder';
 const AuthenContext = createContext({});
 export const AuthenProvider = ({ children }) => {
-  const [renderForm, setRenderForm] = useState("login");
+  const [renderForm, setRenderForm] = useState('login');
   const [isAuthenModalOpen, setIsAuthenModalOpen] = useState(false);
   const [profiles, setProfiles] = useState({});
   //danh sách khóa học
   const [profileCourse, setProfileCourse] = useState([]);
   const [profilePayment, setProfilePayment] = useState([]);
 
-  useEffect(() => {
-    const accesstoken = localStorage.getItem(LOCAL_STOGARE.token);
-    if (accesstoken) {
-      //call api profile
-      courseOrder(accesstoken);
-      paymentOrder(accesstoken);
-      onGetProfile(accesstoken);
-    }
-  }, []);
-
   const openAuthModal = () => {
     if (!!!localStorage.getItem(LOCAL_STOGARE.token))
       setIsAuthenModalOpen(true);
   };
   const closeAuthModal = () => {
-    setRenderForm("login");
+    setRenderForm('login');
     setIsAuthenModalOpen(false);
   };
   const onLogin = async (loginData) => {
     //call API
     try {
       const res = await AuthService.login(loginData);
-      const { token, refreshToken } = res.data?.data || "";
+      const { token, refreshToken } = res.data?.data || '';
       //lưu vào localstogare
       localStorage.setItem(LOCAL_STOGARE.token, token);
       localStorage.setItem(LOCAL_STOGARE.refreshToken, refreshToken);
       if (!!token) {
-        message.success("Đăng nhập thành công!");
+        message.success('Đăng nhập thành công!');
         //đóng modal popup
         closeAuthModal();
         onGetProfile(token);
@@ -55,7 +45,7 @@ export const AuthenProvider = ({ children }) => {
       const res = await AuthService.register(registerData);
       closeAuthModal();
       if (res.data?.data?.id) {
-        message.success("đăng kí thành công");
+        message.success('đăng kí thành công');
         onLogin({
           email: registerData.email,
           password: registerData.password,
@@ -69,7 +59,6 @@ export const AuthenProvider = ({ children }) => {
   const onLogOut = () => {
     setProfiles({});
     setProfilePayment([]);
-    setProfiles([]);
 
     localStorage.removeItem(LOCAL_STOGARE.token);
     localStorage.removeItem(LOCAL_STOGARE.refreshToken);
@@ -78,7 +67,7 @@ export const AuthenProvider = ({ children }) => {
     try {
       const resPaymentoder = await CourseOder.getPaymentOrder(token);
       setProfilePayment(resPaymentoder.data?.data);
-      console.log("token :>> ", token);
+      console.log('token :>> ', token);
     } catch (error) {
       console.log(error);
     }
@@ -99,10 +88,19 @@ export const AuthenProvider = ({ children }) => {
     const resProfile = await AuthService.getProfile(token);
     if (resProfile?.data?.data) {
       setProfiles(resProfile?.data?.data);
-      console.log("resProfile?.data?.data :>> ", resProfile?.data?.data);
+      console.log('resProfile?.data?.data :>> ', resProfile?.data?.data);
     }
   };
 
+  useEffect(() => {
+    const accesstoken = localStorage.getItem(LOCAL_STOGARE.token);
+    if (accesstoken) {
+      //call api profile
+      courseOrder(accesstoken);
+      paymentOrder(accesstoken);
+      onGetProfile(accesstoken);
+    }
+  }, []);
   return (
     <>
       <AuthenContext.Provider
